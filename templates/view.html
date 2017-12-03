@@ -1,0 +1,54 @@
+{% extends "base_env.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+
+<table class="table table-hover">
+    <thead>
+        <th class="active">ID</th>
+        <th class="active">变量名</th>
+        <th class="active">变量值</th>
+        <th class="active">创建时间</th>
+        <th class='active'>操作</th>
+    </thead>
+    <tbody>
+        {% for todo in variablelists %}
+            <!-- tr -->
+            <tr class="info">
+                <td>{{ loop.index }}</td>
+                <td>{{ todo.key }}</td>
+                <td>{{ todo.value }}</td>
+                <td>{{ todo.create_time }}</td>
+                <td>
+                    <a href="{{ url_for('change_variable_list', env_id=todo.env_id, id=todo.id) }}" class="btn btn-success" role ="button">修改</a>
+                    <a href="{{ url_for('delete_variable_list', env_id=todo.env_id, id=todo.id) }}" class="btn btn-danger" role ="button">删除</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> ADD </button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog"> <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" align="center">Add new variable</h4>
+      </div>
+
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-md-8 col-md-offset-2"> {{ wtf.quick_form(form, form_type="horizontal") }} </div>
+          </div>
+      </div> <!-- modal body -->
+
+    </div> </div>
+</div>
+
+
+{% endblock %}
