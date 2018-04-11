@@ -7,4 +7,4 @@ flask入门的第一个项目
              制定mysql的地址：mysql://username:password@hostname/database
 
 本次项目中包含数据库一对多关系，增删改查操作，动态url指向等.<br>
-希望对你的入门falsk起到帮助性作用，详情请关注[我的简书](http://www.jianshu.com/u/da1677475c27)
+希望对你的入门flask起到帮助性作用，详情请关注[我的简书](http://www.jianshu.com/u/da1677475c27)
